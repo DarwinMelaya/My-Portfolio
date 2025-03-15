@@ -4,6 +4,30 @@ import { useState } from "react";
 const projectsData = [
   {
     id: 1,
+    title: "DOST SETUP Refund Monitoring System",
+    description:
+      "A refund monitoring tracker for DOST customers to track balances, with admin analytics, notifications, chat, payment records, customer profiles, and mobile responsiveness.",
+    images: [
+      "/public/setup/1.png",
+      "/public/setup/2.png",
+      "/public/setup/3.png",
+      "/public/setup/4.png",
+      "/public/setup/5.png",
+      "/public/setup/6.png",
+    ], // Array of image paths
+    technologies: [
+      "React",
+      "Figma",
+      "Supabase",
+      "Tailwind CSS",
+      "Npm",
+      "REST API",
+      "Render",
+    ],
+    liveLink: "https://setup-tbeg.onrender.com/",
+  },
+  {
+    id: 2,
     title: "Project Name",
     description:
       "A brief description of your project and what it does. What problems does it solve?",
@@ -12,11 +36,9 @@ const projectsData = [
       "/path-to-your-image2.jpg",
       "/path-to-your-image3.jpg",
     ], // Array of image paths
-    technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"], // Add your technologies
-    liveLink: "https://your-project-url.com", // Optional
-    githubLink: "https://github.com/your-username/project", // Optional
+    technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    liveLink: "https://your-project-url.com",
   },
-  // Add more projects following the same structure
 ];
 
 const ProjectCard = ({ project }) => {

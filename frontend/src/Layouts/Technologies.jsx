@@ -41,6 +41,9 @@ const Technologies = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  // Double the items array for seamless looping
+  const doubledTechnologies = [...technologies, ...technologies];
+
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-black text-white px-4 py-16">
       {/* Changed fixed to absolute for background elements */}
@@ -58,38 +61,39 @@ const Technologies = () => {
         Technologies
       </motion.h2>
 
-      <div
-        ref={ref}
-        className="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 max-w-6xl"
-      >
-        {technologies.map((tech, index) => (
-          <motion.div
-            key={tech.name}
-            className="flex flex-col items-center justify-center group"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{
-              duration: 0.3,
-              delay: Math.min(index * 0.05, 0.5),
-            }}
-            style={{
-              willChange: "opacity, transform",
-            }}
-          >
+      <div className="relative w-full overflow-hidden">
+        <motion.div
+          ref={ref}
+          className="flex gap-8 py-4"
+          animate={{
+            x: ["0%", "-50%"],
+          }}
+          transition={{
+            duration: 20,
+            ease: "linear",
+            repeat: Infinity,
+          }}
+        >
+          {doubledTechnologies.map((tech, index) => (
             <div
-              className="relative p-6 bg-gray-900/80 rounded-2xl 
-                        hover:scale-105 transition-transform duration-300 ease-out
-                        border border-gray-800 hover:border-gray-700
-                        will-change-transform"
+              key={`${tech.name}-${index}`}
+              className="flex flex-col items-center justify-center group flex-shrink-0"
             >
-              <div className="relative text-6xl">{tech.icon}</div>
-            </div>
+              <div
+                className="relative p-6 bg-gray-900/80 rounded-2xl 
+                          hover:scale-105 transition-transform duration-300 ease-out
+                          border border-gray-800 hover:border-gray-700
+                          will-change-transform"
+              >
+                <div className="relative text-6xl">{tech.icon}</div>
+              </div>
 
-            <span className="mt-3 text-sm font-medium text-gray-400 group-hover:text-white transition-colors duration-300">
-              {tech.name}
-            </span>
-          </motion.div>
-        ))}
+              <span className="mt-3 text-sm font-medium text-gray-400 group-hover:text-white transition-colors duration-300">
+                {tech.name}
+              </span>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );
