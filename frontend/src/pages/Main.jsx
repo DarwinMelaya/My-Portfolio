@@ -1,4 +1,4 @@
-import ProfileSection from "../components/ProfileSection";
+import ProfileSection from "../Layouts/ProfileSection";
 import Navbar from "../Layouts/Navbar";
 
 const Main = () => {
