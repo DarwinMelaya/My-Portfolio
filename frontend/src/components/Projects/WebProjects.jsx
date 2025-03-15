@@ -8,12 +8,12 @@ const projectsData = [
     description:
       "A refund monitoring tracker for DOST customers to track balances, with admin analytics, notifications, chat, payment records, customer profiles, and mobile responsiveness.",
     images: [
-      "/public/setup/1.png",
-      "/public/setup/2.png",
-      "/public/setup/3.png",
-      "/public/setup/4.png",
-      "/public/setup/5.png",
-      "/public/setup/6.png",
+      "/setup/1.png",
+      "/setup/2.png",
+      "/setup/3.png",
+      "/setup/4.png",
+      "/setup/5.png",
+      "/setup/6.png",
     ], // Array of image paths
     technologies: [
       "React",
@@ -23,11 +23,27 @@ const projectsData = [
       "Npm",
       "REST API",
       "Render",
+      "Node Mailer",
     ],
     liveLink: "https://setup-tbeg.onrender.com/",
   },
   {
     id: 2,
+    title: "OJTracker",
+    description:
+      "It was created to make it easier to monitor the hours completed during OJT, and it also records the accomplishment report so that with just one click, a PDF file is generated.",
+    images: [
+      "/ojtracker/1.png",
+      "/ojtracker/2.png",
+      "/ojtracker/3.png",
+      "/ojtracker/4.png",
+      "/ojtracker/5.png",
+    ], // Array of image paths
+    technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    liveLink: "https://your-project-url.com",
+  },
+  {
+    id: 3,
     title: "Project Name",
     description:
       "A brief description of your project and what it does. What problems does it solve?",
