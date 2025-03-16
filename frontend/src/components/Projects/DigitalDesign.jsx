@@ -26,8 +26,37 @@ const designsData = [
       "/digitaldesign/photoediting/4.png",
       "/digitaldesign/photoediting/5.png",
       "/digitaldesign/photoediting/6.png",
-    ], // Replace with your actual image paths
+    ],
     tools: ["Canva"],
+  },
+  {
+    id: 3,
+    title: "Paraluman",
+    description: "Paraluman by Adine cover photo",
+    images: ["paraluman.jpg"],
+    tools: ["Ibis Paint X"],
+  },
+  {
+    id: 4,
+    title: "Digital Art",
+    description: "Digital using Ibis Paint X",
+    images: [
+      "digitalart/1.jpg",
+      "digitalart/2.jpg",
+      "digitalart/3.jpg",
+      "digitalart/4.jpg",
+      "digitalart/5.jpg",
+      "digitalart/6.jpg",
+      "digitalart/7.jpg",
+      "digitalart/8.jpg",
+      "digitalart/9.jpg",
+      "digitalart/10.jpg",
+      "digitalart/11.jpg",
+      "digitalart/12.jpg",
+      "digitalart/13.jpg",
+      "digitalart/14.jpg",
+    ],
+    tools: ["Ibis Paint X"],
   },
   // Add more design items as needed
 ];
