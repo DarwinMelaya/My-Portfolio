@@ -2,6 +2,7 @@ import ProfileSection from "../Layouts/ProfileSection";
 import Navbar from "../Layouts/Navbar";
 import Technologies from "../Layouts/Technologies";
 import Projects from "../Layouts/Projects";
+import CtaSection from "../Layouts/CtaSection";
 
 const Main = () => {
   return (
@@ -11,6 +12,7 @@ const Main = () => {
         <ProfileSection />
         <Technologies />
         <Projects />
+        <CtaSection />
       </main>
     </div>
   );
