@@ -192,7 +192,7 @@ const ProjectCard = ({ project }) => {
         </div>
 
         <div className="flex flex-col h-full">
-          <h3 className="text-2xl font-bold my-3 text-gray-300 line-clamp-1">
+          <h3 className="text-2xl font-bold my-3 text-gray-300">
             {project.title}
           </h3>
           <div className="flex-grow overflow-y-auto">
