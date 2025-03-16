@@ -66,9 +66,10 @@ const projectsData = [
     description:
       "This project is a collection of movies where I used an API to display the latest movies.",
     images: [
-      "/path-to-your-image1.jpg",
-      "/path-to-your-image2.jpg",
-      "/path-to-your-image3.jpg",
+      "/mobiflix/1.png",
+      "/mobiflix/2.png",
+      "/mobiflix/3.png",
+      "/mobiflix/4.png",
     ], // Array of image paths
     technologies: ["React", "Node.js", "Tailwind CSS"],
     liveLink: "https://your-project-url.com",
