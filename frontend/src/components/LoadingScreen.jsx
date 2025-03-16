@@ -7,18 +7,26 @@ const LoadingScreen = () => {
   const word = "DARWIN";
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (letterIndex < word.length) {
-        setLetterIndex((prev) => prev + 1);
-      } else {
+    const animationInterval = setInterval(() => {
+      setLetterIndex((prev) => {
+        if (prev < word.length - 1) {
+          return prev + 1;
+        }
+        // Clear the interval when animation is complete
+        clearInterval(animationInterval);
+        // Navigate after the last letter
         setTimeout(() => {
           navigate("/main");
-        }, 500); // Wait 500ms after animation before navigating
-      }
-    }, 200); // Show new letter every 200ms
+        }, 500);
+        return prev;
+      });
+    }, 200);
 
-    return () => clearTimeout(timer);
-  }, [letterIndex, navigate]);
+    // Cleanup
+    return () => {
+      clearInterval(animationInterval);
+    };
+  }, [navigate, word.length]);
 
   return (
     <div className="bg-black h-screen flex items-center justify-center">
