@@ -30,8 +30,7 @@ const ProfileSection = () => {
         <motion.img
           src="profile.jpg"
           alt="Profile"
-          className="relative w-40 h-40 rounded-full object-cover border-2 border-gray-700 transition-transform duration-300 group-hover:scale-105"
-          whileHover={{ rotate: 360 }}
+          className="relative w-40 h-40 rounded-full object-cover border-2 border-gray-700 "
           transition={{ duration: 1 }}
         />
         <span className="absolute bottom-0 right-0 flex h-3 w-3">
