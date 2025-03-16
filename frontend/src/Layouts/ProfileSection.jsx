@@ -1,6 +1,22 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const ProfileSection = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleDownload = async () => {
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const link = document.createElement("a");
+      link.href = "resume.pdf";
+      link.download = "resume.pdf";
+      link.click();
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white px-4">
       {/* Profile Image with animated border */}
@@ -56,29 +72,57 @@ const ProfileSection = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.9 }}
       >
-        <motion.a
-          href="resume.pdf"
-          download
+        <motion.button
+          onClick={handleDownload}
           className="group px-6 py-3 bg-gray-900 rounded-lg
             hover:shadow-lg hover:shadow-gray-800/50 flex items-center gap-2 text-gray-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          disabled={isLoading}
         >
-          <span>Resume</span>
-          <svg
-            className="w-4 h-4 transition-transform group-hover:translate-y-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
-        </motion.a>
+          {isLoading ? (
+            <>
+              <svg
+                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              Downloading...
+            </>
+          ) : (
+            <>
+              <span>Resume</span>
+              <svg
+                className="w-4 h-4 transition-transform group-hover:translate-y-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
+              </svg>
+            </>
+          )}
+        </motion.button>
       </motion.div>
     </div>
   );
