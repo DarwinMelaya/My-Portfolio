@@ -4,8 +4,28 @@ import Technologies from "../Layouts/Technologies";
 import Projects from "../Layouts/Projects";
 import CtaSection from "../Layouts/CtaSection";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const Main = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Add a small delay to ensure smooth transition
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="bg-black h-screen flex items-center justify-center">
+        <div className="text-white text-6xl font-bold">DARWIN</div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-black min-h-screen relative">
       <Navbar />
