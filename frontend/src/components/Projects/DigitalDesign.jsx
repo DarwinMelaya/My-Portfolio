@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import ImageModal from "../Modals/ImageModal";
 
 const designsData = [
   {
@@ -34,6 +35,7 @@ const designsData = [
 const DesignCard = ({ design }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) =>
@@ -59,7 +61,8 @@ const DesignCard = ({ design }) => {
             transition={{ duration: 0.5 }}
             src={design.images[currentImageIndex]}
             alt={`${design.title} - Image ${currentImageIndex + 1}`}
-            className="w-full h-72 object-cover rounded-lg"
+            className="w-full h-72 object-cover rounded-lg cursor-pointer"
+            onClick={() => setIsModalOpen(true)}
           />
           {design.images.length > 1 && (
             <>
@@ -152,6 +155,14 @@ const DesignCard = ({ design }) => {
           </div>
         </div>
       </div>
+
+      <ImageModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        images={design.images}
+        currentIndex={currentImageIndex}
+        setCurrentIndex={setCurrentImageIndex}
+      />
     </div>
   );
 };
