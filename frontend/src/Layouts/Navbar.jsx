@@ -19,12 +19,12 @@ const Navbar = () => {
     {
       icon: <FaInstagram className="text-xl" />,
       text: "Instagram",
-      href: "https://instagram.com",
+      href: "https://www.instagram.com/dahr.wynne/",
     },
     {
       icon: <FaGithub className="text-xl" />,
       text: "Github",
-      href: "https://github.com",
+      href: "https://github.com/DarwinMelaya",
     },
   ];
 

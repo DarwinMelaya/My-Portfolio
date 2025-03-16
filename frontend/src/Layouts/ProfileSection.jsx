@@ -79,16 +79,6 @@ const ProfileSection = () => {
             />
           </svg>
         </motion.a>
-
-        <motion.button
-          className="px-6 py-3 border border-gray-700 rounded-lg text-gray-300
-            hover:bg-gray-900 transition-all duration-300 hover:scale-105
-            hover:shadow-lg hover:shadow-gray-800/50 flex items-center gap-2"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Contact Me
-        </motion.button>
       </motion.div>
     </div>
   );
