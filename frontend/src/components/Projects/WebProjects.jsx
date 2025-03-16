@@ -72,7 +72,7 @@ const projectsData = [
       "/mobiflix/4.png",
     ], // Array of image paths
     technologies: ["React", "Node.js", "Tailwind CSS"],
-    liveLink: "https://your-project-url.com",
+    liveLink: "https://mobiflix.vercel.app/",
   },
 ];
 
