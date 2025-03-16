@@ -12,7 +12,7 @@ const ProfileSection = () => {
       >
         <div className="absolute -inset-0.5 bg-gray-700 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
         <motion.img
-          src="/public/profile.jpg"
+          src="profile.jpg"
           alt="Profile"
           className="relative w-40 h-40 rounded-full object-cover border-2 border-gray-700 transition-transform duration-300 group-hover:scale-105"
           whileHover={{ rotate: 360 }}
@@ -57,7 +57,7 @@ const ProfileSection = () => {
         transition={{ duration: 0.8, delay: 0.9 }}
       >
         <motion.a
-          href="/public/resume.pdf"
+          href="resume.pdf"
           download
           className="group px-6 py-3 bg-gray-900 rounded-lg
             hover:shadow-lg hover:shadow-gray-800/50 flex items-center gap-2 text-gray-300"

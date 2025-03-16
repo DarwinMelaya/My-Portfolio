@@ -39,26 +39,45 @@ const projectsData = [
       "/ojtracker/4.png",
       "/ojtracker/5.png",
     ], // Array of image paths
-    technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
-    liveLink: "https://your-project-url.com",
+    technologies: ["React", "Node.js", "Supabase", "Tailwind CSS"],
+    liveLink: "https://ojt-tracker-system.vercel.app/",
   },
   {
     id: 3,
-    title: "Project Name",
+    title: "BINI CLONE🌸",
     description:
-      "A brief description of your project and what it does. What problems does it solve?",
+      "A recreation of the BINI website, featuring a modern and responsive design. This project showcases the group's latest updates, music, and events, providing fans with an engaging and interactive experience.",
+    images: [
+      "/bini/1.png",
+      "/bini/2.png",
+      "/bini/3.png",
+      "/bini/4.png",
+      "/bini/5.png",
+      "/bini/6.png",
+      "/bini/7.png",
+      "/bini/8.png",
+    ], // Array of image paths
+    technologies: ["React", "Node.js", "Tailwind CSS"],
+    liveLink: "https://bini-xi.vercel.app/",
+  },
+  {
+    id: 4,
+    title: "MobiFlix",
+    description:
+      "This project is a collection of movies where I used an API to display the latest movies.",
     images: [
       "/path-to-your-image1.jpg",
       "/path-to-your-image2.jpg",
       "/path-to-your-image3.jpg",
     ], // Array of image paths
-    technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    technologies: ["React", "Node.js", "Tailwind CSS"],
     liveLink: "https://your-project-url.com",
   },
 ];
 
 const ProjectCard = ({ project }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) =>
@@ -73,10 +92,10 @@ const ProjectCard = ({ project }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative h-[600px]">
       <div className="absolute -inset-0.5 bg-gray-700 rounded-lg opacity-75 blur"></div>
-      <div className="relative bg-black p-6 rounded-lg">
-        <div className="relative overflow-hidden rounded-lg">
+      <div className="relative bg-black p-6 rounded-lg h-full flex flex-col">
+        <div className="relative overflow-hidden rounded-lg h-56 flex-shrink-0">
           <motion.img
             key={currentImageIndex}
             initial={{ opacity: 0 }}
@@ -84,8 +103,33 @@ const ProjectCard = ({ project }) => {
             transition={{ duration: 0.5 }}
             src={project.images[currentImageIndex]}
             alt={`${project.title} - Image ${currentImageIndex + 1}`}
-            className="w-full h-56 object-cover rounded-lg mb-4"
+            className="w-full h-56 object-cover rounded-lg"
           />
+          {project.liveLink && (
+            <motion.a
+              href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute top-4 right-4 p-2 bg-black/50 rounded-full backdrop-blur-sm hover:bg-black/70 transition-colors"
+              whileTap={{ scale: 0.95 }}
+              title="View Live Demo"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6 text-gray-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </motion.a>
+          )}
           {project.images.length > 1 && (
             <>
               <button
@@ -146,45 +190,35 @@ const ProjectCard = ({ project }) => {
           )}
         </div>
 
-        <h3 className="text-2xl font-bold mb-3 text-gray-300">
-          {project.title}
-        </h3>
-        <p className="text-gray-400 mb-4 line-clamp-3">{project.description}</p>
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.technologies.map((tech, index) => (
-            <span
-              key={index}
-              className="bg-gray-900 px-3 py-1 rounded-full text-sm font-medium text-gray-300 border border-gray-700"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-        <div className="flex gap-4">
-          {project.liveLink && (
-            <motion.a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group px-6 py-3 bg-gray-900 rounded-lg flex items-center gap-2 text-gray-300"
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>Live Demo</span>
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+        <div className="flex flex-col h-full">
+          <h3 className="text-2xl font-bold my-3 text-gray-300 line-clamp-1">
+            {project.title}
+          </h3>
+          <div className="flex-grow overflow-y-auto">
+            <p className={`text-gray-400 mb-4`}>
+              {isExpanded
+                ? project.description
+                : `${project.description.slice(0, 150)}... `}
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="text-blue-400 hover:text-blue-300 text-sm font-medium inline"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
-            </motion.a>
-          )}
+                {isExpanded ? "See Less" : "See More"}
+              </button>
+            </p>
+          </div>
+          <div className="mt-4">
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.technologies.map((tech, index) => (
+                <span
+                  key={index}
+                  className="bg-gray-900 px-3 py-1 rounded-full text-sm font-medium text-gray-300 border border-gray-700"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
