@@ -79,10 +79,10 @@ const DesignCard = ({ design }) => {
   };
 
   return (
-    <div className="relative h-[600px]">
-      <div className="absolute -inset-0.5 bg-gray-700 rounded-lg opacity-75 blur"></div>
-      <div className="relative bg-black p-6 rounded-lg h-full flex flex-col">
-        <div className="relative overflow-hidden rounded-lg h-72 flex-shrink-0">
+    <div className="relative h-[600px] group">
+      <div className="absolute -inset-0.5 bg-gradient-to-br from-gray-600 to-gray-800 rounded-lg opacity-75 blur transition-opacity duration-300 group-hover:opacity-90"></div>
+      <div className="relative bg-black p-8 rounded-lg h-full flex flex-col">
+        <div className="relative overflow-hidden rounded-xl h-72 flex-shrink-0 ring-1 ring-gray-700">
           <motion.img
             key={currentImageIndex}
             initial={{ opacity: 0 }}
@@ -90,14 +90,14 @@ const DesignCard = ({ design }) => {
             transition={{ duration: 0.5 }}
             src={design.images[currentImageIndex]}
             alt={`${design.title} - Image ${currentImageIndex + 1}`}
-            className="w-full h-72 object-cover rounded-lg cursor-pointer"
+            className="w-full h-72 object-cover rounded-xl cursor-zoom-in transition-transform duration-300 group-hover:scale-105"
             onClick={() => setIsModalOpen(true)}
           />
           {design.images.length > 1 && (
             <>
               <button
                 onClick={prevImage}
-                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-gray-300 p-3 rounded-full backdrop-blur-sm"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/80"
                 aria-label="Previous image"
               >
                 <svg
@@ -117,7 +117,7 @@ const DesignCard = ({ design }) => {
               </button>
               <button
                 onClick={nextImage}
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-gray-300 p-3 rounded-full backdrop-blur-sm"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/80"
                 aria-label="Next image"
               >
                 <svg
@@ -135,15 +135,15 @@ const DesignCard = ({ design }) => {
                   />
                 </svg>
               </button>
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 {design.images.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
-                    className={`w-2.5 h-2.5 rounded-full ${
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       currentImageIndex === index
-                        ? "bg-gray-300"
-                        : "bg-gray-500"
+                        ? "bg-white scale-125"
+                        : "bg-gray-500 hover:bg-gray-400"
                     }`}
                     aria-label={`Go to image ${index + 1}`}
                   />
@@ -153,29 +153,29 @@ const DesignCard = ({ design }) => {
           )}
         </div>
 
-        <div className="flex flex-col h-full mt-4">
-          <h3 className="text-2xl font-bold text-gray-300 line-clamp-1">
+        <div className="flex flex-col h-full mt-6">
+          <h3 className="text-2xl font-bold text-white tracking-tight line-clamp-1">
             {design.title}
           </h3>
-          <div className="flex-grow overflow-y-auto">
-            <p className={`text-gray-400 mb-4`}>
+          <div className="flex-grow overflow-y-auto mt-2">
+            <p className={`text-gray-300 mb-4 leading-relaxed`}>
               {isExpanded
                 ? design.description
                 : `${design.description.slice(0, 150)}... `}
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="text-blue-400 hover:text-blue-300 text-sm font-medium inline"
+                className="text-gray-400 hover:text-white text-sm font-medium inline transition-colors duration-300"
               >
                 {isExpanded ? "See Less" : "See More"}
               </button>
             </p>
           </div>
-          <div className="mt-auto">
+          <div className="mt-auto pt-4 border-t border-gray-800">
             <div className="flex flex-wrap gap-2">
               {design.tools.map((tool, index) => (
                 <span
                   key={index}
-                  className="bg-gray-900 px-3 py-1 rounded-full text-sm font-medium text-gray-300 border border-gray-700"
+                  className="bg-gray-900/50 px-4 py-1.5 rounded-full text-sm font-medium text-gray-200 border border-gray-700/50 backdrop-blur-sm"
                 >
                   {tool}
                 </span>

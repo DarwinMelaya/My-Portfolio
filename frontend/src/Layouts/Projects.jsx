@@ -17,26 +17,47 @@ const Projects = () => {
         Projects
       </motion.h2>
 
-      <div className="flex justify-center gap-4 mb-8">
+      <div className="flex justify-center gap-6 mb-12">
         <button
-          className={`px-6 py-2 rounded-full ${
+          className={`relative px-8 py-3 rounded-lg font-medium transition-all duration-300 overflow-hidden group ${
             activeCategory === "web"
-              ? "bg-white text-black"
-              : "bg-transparent text-white border border-white"
+              ? "bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+              : "bg-transparent text-white border border-white/30 hover:border-white"
           }`}
           onClick={() => setActiveCategory("web")}
         >
-          Web Projects
+          <span className="relative z-10">Web Projects</span>
+          {activeCategory !== "web" && (
+            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+          )}
+          {activeCategory === "web" && (
+            <motion.div
+              layoutId="activeTab"
+              className="absolute inset-0 bg-white"
+              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+            />
+          )}
         </button>
+
         <button
-          className={`px-6 py-2 rounded-full ${
+          className={`relative px-8 py-3 rounded-lg font-medium transition-all duration-300 overflow-hidden group ${
             activeCategory === "design"
-              ? "bg-white text-black"
-              : "bg-transparent text-white border border-white"
+              ? "bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+              : "bg-transparent text-white border border-white/30 hover:border-white"
           }`}
           onClick={() => setActiveCategory("design")}
         >
-          Digital Design
+          <span className="relative z-10">Digital Design</span>
+          {activeCategory !== "design" && (
+            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+          )}
+          {activeCategory === "design" && (
+            <motion.div
+              layoutId="activeTab"
+              className="absolute inset-0 bg-white"
+              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+            />
+          )}
         </button>
       </div>
 
